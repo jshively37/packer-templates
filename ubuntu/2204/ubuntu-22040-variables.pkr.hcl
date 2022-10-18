@@ -18,3 +18,8 @@ variable "insecure_connection" {
     description = "Validate certificate"
     default = false
 }
+
+variable "esxi_host" {
+	type = string
+	description = "ESXi host to target"
+}

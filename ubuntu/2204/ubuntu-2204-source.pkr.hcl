@@ -1,38 +1,3 @@
-variable "username" {
-    type = string
-    description = "The username for vCenter"
-}
-
-variable "password" {
-    type = string
-    description = "The password for vCenter"
-}
-
-variable "vcenter_server" {
-    type = string
-    description = "The IP or FQDN for vCenter"
-}
-
-variable "insecure_connection" {
-    type = bool
-    description = "Validate certificate"
-    default = false
-}
-
-variable "esxi_host" {
-	type = string
-	description = "ESXi host to target"
-}
-
-packer {
-  required_plugins {
-    vmware = {
-      version = ">= 1.0.3"
-      source  = "github.com/hashicorp/vmware"
-    }
-  }
-}
-
 source "vsphere-iso" "ubuntu-server" {
   vcenter_server      = var.vcenter_server
   username            = var.username
@@ -59,8 +24,3 @@ source "vsphere-iso" "ubuntu-server" {
 
 
 }
-
-build {
-  sources = [
-    "source.vsphere-iso.ubuntu-server"]
- }
