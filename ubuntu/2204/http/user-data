@@ -1,0 +1,35 @@
+#cloud-config
+autoinstall:
+  version: 1
+  early-commands:
+    # Stop SSH to prevent Packer from connecting too early
+    - sudo systemctl stop ssh
+  locale: en_US
+  keyboard:
+    layout: en
+    variant: us
+  storage:
+    layout:
+      name: direct
+  identity:
+    hostname: ${vm_name}
+    username: ${vm_username}
+    plain_text_passwd: ${vm_password}
+  ssh:
+    install-server: true
+    allow-pw: true
+  packages:
+    - cloud-init
+    - curl
+    - net-tools
+    - open-vm-tools
+    - openssh-server
+  user-data:
+    package_update: true
+    package_upgrade: true
+    package_reboot_if_required: true
+  late-commands:
+    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+    - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu
+    - curtin in-target --target=/target -- apt-get update
+    - curtin in-target --target=/target -- apt-get upgrade --yes

@@ -63,3 +63,18 @@ variable "vm_password" {
   type        = string
   description = "Password for VM"
 }
+
+variable "vm_disk_size" {
+  type        = number
+  description = "Size of VM Disk"
+}
+
+variable "vm_cpus" {
+  type        = number
+  description = "Number of CPUs for the VM"
+}
+
+variable "vm_ram" {
+  type        = number
+  description = "Number of RAM in megabytes for the VM"
+}
