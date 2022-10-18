@@ -1,19 +1,19 @@
 source "vsphere-iso" "ubuntu-server" {
   vcenter_server      = var.vcenter_server
-  username            = var.username
-  password            = var.password
-  insecure_connection = var.insecure_connection
-  iso_url             = "https://releases.ubuntu.com/22.10/ubuntu-22.10-beta-live-server-amd64.iso"
-  iso_checksum        = "a9e9c95170827d96560d6aede0b09863575309c8749291073c1fe721fd32b690"
-  ssh_username        = "packer"
-  ssh_password        = "packer"
+  username            = var.vcenter_username
+  password            = var.vcenter_password
+  insecure_connection = var.vcenter_insecure_connection
+  iso_url             = var.iso_url
+  iso_checksum        = var.iso_checksum
+  ssh_username        = var.vm_username
+  ssh_password        = var.vm_password
   host                = var.esxi_host
-  datastore           = "direct_storage"
+  datastore           = var.datastore
 
   shutdown_command = "shutdown -P now"
 
   # VM Settings
-  vm_name = "test"
+  vm_name = var.vm_name
   storage {
     disk_size             = 20480
     disk_controller_index = 0
