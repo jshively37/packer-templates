@@ -12,3 +12,4 @@ crash.log
 .DS_Store
 local/
 *.env
+var*.hcl
