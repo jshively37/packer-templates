@@ -1,4 +1,5 @@
 build {
   sources = [
-    "source.vsphere-iso.ubuntu-server"]
- }
+    "source.vsphere-iso.ubuntu-server"
+  ]
+}

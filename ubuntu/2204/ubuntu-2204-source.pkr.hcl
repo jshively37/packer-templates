@@ -7,17 +7,15 @@ source "vsphere-iso" "ubuntu-server" {
   iso_checksum        = "a9e9c95170827d96560d6aede0b09863575309c8749291073c1fe721fd32b690"
   ssh_username        = "packer"
   ssh_password        = "packer"
-	host = var.esxi_host
-	datastore = "direct_storage"
+  host                = var.esxi_host
+  datastore           = "direct_storage"
 
-  shutdown_command    = "shutdown -P now"
+  shutdown_command = "shutdown -P now"
 
-
-
-	# VM Settings
-	vm_name = "test"
+  # VM Settings
+  vm_name = "test"
   storage {
-    disk_size = 20480
+    disk_size             = 20480
     disk_controller_index = 0
     disk_thin_provisioned = true
   }
