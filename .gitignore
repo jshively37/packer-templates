@@ -6,3 +6,9 @@ crash.log
 
 # For built boxes
 *.box
+
+# Local
+*.local
+.DS_Store
+local/
+*.env
