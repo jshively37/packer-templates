@@ -2,19 +2,23 @@
 autoinstall:
   version: 1
   early-commands:
-    # Stop SSH to prevent Packer from connecting too early
     - sudo systemctl stop ssh
   locale: en_US
   keyboard:
     layout: en
     variant: us
+  network:
+    version: 2
+    ethernets:
+      eth0:
+        dhcp4: true
   storage:
     layout:
       name: direct
   identity:
-    hostname: ${vm_name}
-    username: ${vm_username}
-    plain_text_passwd: ${vm_password}
+    hostname: packer
+    username: packer
+    plain_text_passwd: packer
   ssh:
     install-server: true
     allow-pw: true
