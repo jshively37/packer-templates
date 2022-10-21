@@ -23,7 +23,7 @@ source "vsphere-iso" "ubuntu-server" {
   http_directory = "http"
 
   boot_command = [
-    "<esc>c<wait>",
+    "<esc><wait>",
     "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"",
     "<enter><wait>",
     "initrd /casper/initrd",
@@ -31,4 +31,14 @@ source "vsphere-iso" "ubuntu-server" {
     "boot",
     "<enter>"
   ]
+
+  # boot_command = [
+  #   "<esc>c<wait>",
+  #   "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"",
+  #   "<enter><wait>",
+  #   "initrd /casper/initrd",
+  #   "<enter><wait>",
+  #   "boot",
+  #   "<enter>"
+  # ]
 }
